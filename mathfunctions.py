@@ -19,3 +19,6 @@ print(2**3)# here ** means power of (here 2 is base and 3 is power)
 # power,exponents,multiplication,division,addition,substraction
 # we can execute a block of operation of our will first by adding a ( ) around the operation
 # eg : ((3+3)- 3*3) here * should have happened first but + will happen 
+
+
+adgvad

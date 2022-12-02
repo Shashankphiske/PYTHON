@@ -17,4 +17,5 @@ print(name + str(integernumber) )
                   # it is only used by us humans to better understand the number
 # the len function only works on strings
 # to avoid the pain of type casting every other data type to use we can use f strings
-print(f"the use is great {name} {floatingnumber}{integernumber}{booleanvalue}")                  
+print(f"the use is great {name} {floatingnumber}{integernumber}{booleanvalue}")             
+auydgv
