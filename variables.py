@@ -18,3 +18,8 @@ print(name + str(integernumber) )
 # the len function only works on strings
 # to avoid the pain of type casting every other data type to use we can use f strings
 print(f"the use is great {name} {floatingnumber}{integernumber}{booleanvalue}")             
+# we can check if a number or value is written in a variable by typecasting with bollean
+# for eg:
+a = 10
+a = bool(a)
+print(a)
