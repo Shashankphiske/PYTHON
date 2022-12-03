@@ -1,4 +1,5 @@
 import turtle
+import time
 
 positions = [(0,0),(-20,0),(-40,0)]
 
@@ -14,5 +15,12 @@ class Snake:
             bob.penup()
             bob.goto(i)
     def move(self):
-        
+        time.sleep(0.07)
+        for i in range(len(self.segments)-1,0,-1):
+            x = self.segments[i-1].xcor()
+            y = self.segments[i-1].ycor()
+            self.segments[i].goto(x,y)
+
+        self.segments[0].forward(20)
+    
 
