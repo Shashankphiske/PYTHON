@@ -9,3 +9,5 @@ print(name.isalpha())#asking if the given value is alphabetical
 print(name.count("h"))#counts the number of given value in a variable
 print(name.replace("h","o"))#replaces the original value with the given value in a variable
 print(name*3)#we can multiply strings by a int to print it multiple times
+print(name.find('s'))# finds the first occurence of the given string in another string ,even a space,it return a integer
+print(name.rfind('s'))# finds the last occurence
