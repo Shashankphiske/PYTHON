@@ -14,7 +14,7 @@ print(a2)
 system of equations is:
 1)3x + 2y +z = 4
 2)5x - 5y +4z = 3
-6x + z = 0'''
+3)6x + z = 0'''
 A = np.array([[3,2,1],[5,-5,4],[6,0,1]])
 print(A)
 B = np.array([1,2,3])# we created two vectors B,C
