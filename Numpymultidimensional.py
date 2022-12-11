@@ -29,4 +29,11 @@ print(np.cross(B,C))# cross product of vectors
                     # cross product of vector is another vector
 
 D = np.array([4,3,0])# vector of constants from the equation given
-print(np.linalg.solve(A,D))                    
+print(np.linalg.solve(A,D))# we solved the equations using matrix
+                           # where x,y and z values will be provided respectively
+
+# finding Eigen values of a matrix
+q = np.array([[4,2,2],[2,4,2],[2,2,4]])
+e , v = np.linalg.eig(q)# this will return Eigen values as well as eigen vectors       
+                        # here e is eigen value and v is eigen vectors
+     
