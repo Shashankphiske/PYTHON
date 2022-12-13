@@ -36,4 +36,4 @@ print(np.linalg.solve(A,D))# we solved the equations using matrix
 q = np.array([[4,2,2],[2,4,2],[2,2,4]])
 e , v = np.linalg.eig(q)# this will return Eigen values as well as eigen vectors       
                         # here e is eigen value and v is eigen vectors
-     
+   
