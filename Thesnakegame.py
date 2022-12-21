@@ -60,7 +60,7 @@ while run:
     if turtles[0].xcor() > 270 or turtles[0].xcor() < -270 or turtles[0].ycor() > 270 or turtles[0].ycor() < -270:
         run = False
         break
-
+ 
     time.sleep(0.07)
     for i in range(len(turtles)-1,0,-1):
         x = turtles[i-1].xcor()
