@@ -1,17 +1,18 @@
-import turtle
+from turtle import Screen
 from snakeclass import Snake
+from foodclass import FOOD
+from scoreboard import Score
 import time
-from foodclass import apple
 
-screen = turtle.Screen()
-screen.setup(600,600)
+screen = Screen()
 screen.bgcolor('black')
+screen.setup(width=600,height = 600)
+screen.title("The Snake Game")
 screen.tracer(0)
 
-snake = Snake() # once this line is triggered we will be calling our create snake method directly to create 3 headed snake
-
-apple = apple()
-
+snake = Snake()
+apple = FOOD()
+score = Score()
 screen.listen()
 screen.onkey(snake.up,'w')
 screen.onkey(snake.down,'s')
@@ -21,17 +22,20 @@ screen.onkey(snake.right,'d')
 gameon = True
 while gameon:
     screen.update()
-    time.sleep(0.07)
-# we will check the collision with apple using the distance method inside turtle
-    if snake.segments[0].distance(apple) < 14 :
-        apple.refresh()
-        snake.snake_refresh()
-
-    if snake.snake_head.xcor() > 280 or snake.snake_head.xcor() < -280 or snake.snake_head.ycor() > 280 or snake.snake_head.ycor() < -280:
+    time.sleep(0.1)
+    if snake.turtles[0].xcor() > 270 or snake.turtles[0].xcor() < -270 or snake.turtles[0].ycor() > 270 or snake.turtles[0].ycor() < -270:
         gameon = False
-
-    snake.move()
-    for i in range(0,len(snake.segments)):
-        if snake.snake_head.distance(snake.segments[i]) < 10:
-            gameon = False
+        score.over()
+    if snake.head.distance(apple) < 15:
+        apple.reset_apple()
+        snake.snake_reset()
+        score.reset_score()
+    for i in snake.turtles:
+        if i is snake.head:
+            pass
+        else:
+            if snake.head.distance(apple) < 10:
+                gameon = False
+                apple.over()      
+    snake.movement()
 screen.exitonclick()

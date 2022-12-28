@@ -1,52 +1,56 @@
-import turtle
-import time
-import random
-
-positions = [(0,0),(-20,0),(-40,0)]
+pos = [(0,0),(-20,0),(-40,0)]
+from turtle import Turtle
+speed = 20
+UP = 90
+DOWN = 270
+LEFT = 180
+RIGHT = 0
 
 class Snake:
     def __init__(self):
-        self.segments =[]
+        self.turtles = []
         self.create_snake()
-        self.snake_head = self.segments[0]
+        self.head = self.turtles[0]
     def create_snake(self):
-        for i in positions:
-            bob = turtle.Turtle(shape = 'square')
+        for i in pos:
+            bob = Turtle('square')
             bob.color('white')
             bob.penup()
             bob.goto(i)
-            self.segments.append(bob)
-    def move(self):
-        time.sleep(0.02)
-        for i in range(len(self.segments)-1,0,-1):
-            x = self.segments[i-1].xcor()
-            y = self.segments[i-1].ycor()
-            self.segments[i].goto(x,y)
-        self.segments[0].forward(20)
-    def right(self):
-        self.segments[0].right(90)
-    def left(self):
-        self.segments[0].left(90)
+            self.turtles.append(bob)
+
+    def movement(self):
+        for i in range(len(self.turtles)-1,0,-1):
+            x = self.turtles[i-1].xcor()
+            y = self.turtles[i-1].ycor()
+            self.turtles[i].goto(x,y)
+        self.turtles[0].forward(speed)              
+
     def up(self):
-        h = self.segments[0].heading()
-        if h == 0:
-            self.segments[0].left(90)
-        elif h == 180:
-            self.segments[0].right(90)            
+        if self.head.heading() == DOWN:
+            pass
+        else:
+            self.head.setheading(UP)
     def down(self):
-        h = self.segments[0].heading()  
-        if h == 0:
-            self.segments[0].right(90)
-        elif h == 180:
-            self.segments[0].left(90)   
-    def snake_refresh(self):
-        bob = turtle.Turtle(shape = 'square')
-        self.segments.append(bob)
+        if self.head.heading() == UP:
+            pass
+        else:
+            self.head.setheading(DOWN)
+    def left(self):
+        if self.head.heading() == RIGHT:
+            pass
+        else:
+            self.head.setheading(LEFT)
+    def right(self):
+        if self.head.heading() == LEFT:
+            pass
+        else:
+            self.head.setheading(RIGHT)    
+    def snake_reset(self):
+        bob = Turtle('square')
         bob.color('white')
         bob.penup()
-        bob.goto(self.segments[len(self.segments)-1].xcor()-20,self.segments[len(self.segments)-1])   
-    def collision_wall(self,gameon): 
-        if  self.snake_head.xcor() > 270 or self.snake_head.xcor() < -270 or self.snake_head.ycor() > 270 or self.snake_head.ycor() < -270:
-            return self.gameon ==  False
-                  
+        bob.goto(self.turtles[len(self.turtles)-1].xcor()-20,self.turtles[len(self.turtles)-1])
+        self.turtles.append(bob)        
 
+  
