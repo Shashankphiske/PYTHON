@@ -8,12 +8,14 @@ import scipy as sp
 '''we can find the minimum value of a function
 for eg :minimize f(x) = (x-3)^2'''
 
-from scipy.optimize import minimize
+from scipy.optimize import minimize 
 
 def f(x):
-    return (x-5)**2
-res = minimize(f,4)
+    return -( (x-3)**2)
 
-print(res.x)# this returns the answer as an array
-print(res.x[0])# this returns the answer as we take 0th elemnt of an array
+res = minimize(f , 0)
+print(res)
+
+
+# this returns the answer as we take 0th elemnt of an array
                # res.x[0] is the minimum value of the function
