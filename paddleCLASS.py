@@ -9,8 +9,8 @@ class Paddle(Turtle):
         self.shapesize(stretch_len = 0.8,stretch_wid = 5)
 
     def UP(self):
-        y = self.ycor() + 20
+        y = self.ycor() + 30
         self.goto(self.xcor(),y)
     def DOWN(self):
-        y = self.ycor() - 20
+        y = self.ycor() - 30
         self.goto(self.xcor(),y)  

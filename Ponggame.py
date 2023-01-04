@@ -2,6 +2,7 @@ import turtle
 import time
 from paddleCLASS import Paddle
 from ballCLASS import Ball
+import time
 screen = turtle.Screen()
 screen.bgcolor('black')
 screen.setup(width = 800,height = 600) 
@@ -24,6 +25,13 @@ screen.onkey(key='l',fun=r_paddle.DOWN)
 
 gameon = True
 
+
 while gameon:
+    time.sleep(0.05)
+    if ball.ycor() > 280 or ball.ycor() < -280:
+        ball.collison()
+    if ball.distance(r_paddle) < 50 and ball.xcor() > 330 or ball.distance(l_paddle) < 50 and ball.xcor() < -330: 
+        ball.collisionx()     
     screen.update()
+    ball.move()
 screen.exitonclick()
