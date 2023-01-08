@@ -18,4 +18,12 @@ class Ball(Turtle):
         self.add2 *= -1
 
     def collisionx(self):
-        self.add1 *= -1    
+        self.add1 *= -1
+
+    def reset(self):
+        self.goto(0,0)
+        self.collisionx()
+
+    def speed(self):
+        self.add1 += 2
+        self.add2 += 2            
