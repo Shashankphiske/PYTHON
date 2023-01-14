@@ -11,7 +11,7 @@ class score(Turtle):
         self.writer()
 
     def writer(self):    
-        self.write(self.crosser_score,align = "center",font = ("Ariel",24,"normal"))
+        self.write(self.crosser_score,align = "center",font = ("Ariel",24,"bold"))
 
     def update_score(self):
         self.crosser_score += 1

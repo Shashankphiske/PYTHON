@@ -10,7 +10,7 @@ class crosser(Turtle):
         self.goto(0,-280)
 
     def move(self):
-        self.forward(20)
+        self.forward(10)
 
     def crosser_reset(self):
         self.goto(0,-280)

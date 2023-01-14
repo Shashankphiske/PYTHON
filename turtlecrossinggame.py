@@ -3,22 +3,8 @@ import time
 import random
 from turtlecrosser import crosser
 from crosser_score import score
+from crossing_cars import car_manager   
 
-colors = ['red','blue','yellow','green','pink','white','purple','brown','orange']
-crosser_list1 = []
-crosser_list2 = []
-crosser_list3 = []
-crosser_list4 = []
-crosser_list5 = []
-crosser_list6 = []
-crosser_list7 = []
-crosser_list8 = []
-crosser_list9 = []
-crosser_list10 = []
-crosser_list11 = []
-crosser_list12 = []
-crosser_list13 = []
-main_list = []
 
 screen = turtle.Screen()
 screen.bgcolor('black')
@@ -30,19 +16,28 @@ crosser_turtle = crosser()
 
 crosser_score = score()
 
+crosser_car = car_manager()
 screen.onkey(fun = crosser_turtle.move,key = 'w')
-
 
 gameon = True
 while gameon:
 
     time.sleep(0.1)
     screen.update()
-    for i in main_list:
-        z = random.randint(-10,-3)
-        i.forward(z)
+
     if crosser_turtle.ycor() >= 290:
         crosser_turtle.crosser_reset()
         crosser_score.update_score()
+        crosser_car.level_up()
 
+    crosser_car.create_cars()
+    crosser_car.move_car()
+
+    for i in crosser_car.cars:
+        if crosser_turtle.distance(i) < 20:
+            gameon = False
+            crosser_score.game_over()
+    for i in crosser_car.cars:
+        if i.xcor() > 310:
+            crosser_car.cars.remove(i)        
 screen.exitonclick()

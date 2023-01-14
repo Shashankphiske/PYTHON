@@ -52,5 +52,3 @@ class Snake:
         bob.penup()
         bob.goto(self.turtles[len(self.turtles)-1].xcor()-20,self.turtles[len(self.turtles)-1])
         self.turtles.append(bob)        
-
-    
