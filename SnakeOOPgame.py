@@ -27,19 +27,14 @@ while gameon:
         apple.reset_apple()
         score.reset_score()
         snake.snake_reset()
-    if snake.turtles[0].xcor() > 270 or snake.turtles[0].xcor() < -270:
-        x = snake.head.xcor()
-        y = snake.head.ycor()
-        snake.head.goto(-x,y)
-    if snake.turtles[0].ycor() > 270 or snake.turtles[0].ycor() < -270:
-        x = snake.head.xcor()
-        y = snake.head.ycor()
-        snake.head.goto(x,-y)       
+
+    if snake.turtles[0].ycor() > 270 or snake.turtles[0].ycor() < -270 or snake.turtles[0].xcor() > 270 or snake.turtles[0].xcor() < -270:
+        score.reset()
+        snake.reset()
         
 
     for i in range(1,len(snake.turtles)-1):
         if snake.head.distance(snake.turtles[i]) < 10:
-            gameon = False
             score.over()
             
        

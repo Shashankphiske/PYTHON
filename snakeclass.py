@@ -52,3 +52,10 @@ class Snake:
         bob.penup()
         bob.goto(self.turtles[len(self.turtles)-1].xcor()-20,self.turtles[len(self.turtles)-1])
         self.turtles.append(bob)        
+
+    def reset(self):
+        for i in self.turtles:
+            i.goto(1000,1000)
+        self.turtles.clear()
+        self.create_snake()    
+        self.head = self.turtles[0]
