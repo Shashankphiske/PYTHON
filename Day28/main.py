@@ -1,4 +1,5 @@
 from tkinter import *
+import math
 
 # a canvas widget is something like a canvas only it allows us to layer things
 # ---------------------------- CONSTANTS ------------------------------- #
@@ -15,16 +16,47 @@ min_count_1 = int(main_text[0])
 min_count_2 = int(main_text[1])
 sec_count_1 = int(main_text[3])
 sec_count_2 = int(main_text[4])
+loop = 0  
+check = "✔"
+timer = None
 # ---------------------------- TIMER RESET ------------------------------- # 
-
+def reset_timer():
+    window.after_cancel(timer)
+    label.config(text = "TIMER",fg = GREEN)
+    check_mark.config(text="")
+    canvas.itemconfig(text_count,text = "00:00")
+    global loop
+    loop = 0
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 def start_timer():
-    countdown(5)
-# ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
-def countdown(count):
-    canvas.itemconfig(text_count,text = count)
-    if count > 0:
-        window.after(1000,countdown,count-1)
+    global loop
+    loop += 1
+    
+    if loop%8 == 0:
+        loop == 0
+        i = LONG_BREAK_MIN
+        label.config(text = "LONG BREAK",fg = RED)
+    elif loop%2 == 0:
+        i = SHORT_BREAK_MIN
+        label.config(text = "SHORT BREAK",fg = PINK)
+        check_mark.config(text = check*int((loop/2)))
+    else:
+        i = WORK_MIN
+        label.config(text = "WORK PERIOD",fg = GREEN)
+    countdown(i*60)
+# ---------------------------- COUNTx`DOWN MECHANISM ------------------------------- # 
+def countdown(counti):
+    count_min = math.floor(counti / 60)
+    count_sec = counti % 60
+
+    if count_sec < 10:
+        count_sec = "0"+str(count_sec)
+    canvas.itemconfig(text_count,text = f"{count_min}:{count_sec}")
+    if counti > 0:
+        global timer
+        timer = window.after(1000,countdown,counti-1)
+    else:
+        start_timer()
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
 window.title("POMODORO")
@@ -40,14 +72,14 @@ label = Label(text = "TIMER")
 label.config(bg = YELLOW,fg = GREEN,font = (FONT_NAME,24,"bold"))
 label.grid(column = 2,row = 1)
 
-button_start = Button(text="START",command=start_timer)
+button_start = Button(text="START",command=start_timer) 
 button_start.config(bg = YELLOW,fg = RED)
 button_start.grid(column = 1,row = 3)
 
-reset_button = Button(text = "RESET")
+reset_button = Button(text = "RESET",command = reset_timer)
 reset_button.config(bg = YELLOW,fg = RED)
 reset_button.grid(column = 3,row = 3)
 
-check_mark = Label(text = "✔",fg = RED,bg = YELLOW)
+check_mark = Label(fg = RED,bg = YELLOW)
 check_mark.grid(column = 2,row = 4)
 window.mainloop()

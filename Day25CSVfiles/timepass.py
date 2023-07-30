@@ -2,8 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-y = np.linspace(-1000,1000)
-x = (y**2)*4
+x = np.linspace(-1000,1000)
+y = 3*(x**2)
 
 plt.plot(x,y)
 plt.show()

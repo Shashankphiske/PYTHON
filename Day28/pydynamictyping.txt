@@ -1,0 +1,6 @@
+>The process by which we can change the data type of a variable by basically changing the content inside it
+ is called as dynamic typing.
+ eg :
+    a = 6 (int)
+    a = "ssp" (string)
+>This feature doesnt work in other programming languages
