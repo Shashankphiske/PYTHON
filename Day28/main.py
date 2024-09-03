@@ -63,7 +63,7 @@ window.title("POMODORO")
 window.config(padx = 100,pady = 50,bg = YELLOW)
 
 canvas = Canvas(width = 200,height = 224,bg = YELLOW,highlightthickness = 0) # the highlightthickness eliminates the border that was being created
-tomato = PhotoImage(file = "C:\\Users\\shash\\Documents\\PYTHON\\Day28\\tomato.png")
+tomato = PhotoImage(file = "C:\\Users\\shash\\OneDrive\\Documents\\Transfer3\\PYTHON\\Day28\\tomato.png")
 canvas.create_image(100,112,image = tomato)
 text_count = canvas.create_text(101,130,text = main_text,fill = "white",font = (FONT_NAME,35,"bold"))
 canvas.grid(column = 2,row = 2)
