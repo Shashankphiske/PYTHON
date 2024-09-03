@@ -41,7 +41,7 @@ while  gambling != "no":
     sum = 0                
     call = input("Do you want a new card :")
       
-    while value < 21 and call != "no":
+    while value < 21 and call == "yes":
         player_value.append(random.choice(cards))
         value = 0
         for i in player_value:
